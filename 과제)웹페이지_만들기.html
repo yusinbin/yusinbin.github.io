@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>유신 | 개인 웹사이트</title>
+  <meta name="description" content="컴퓨터공학을 공부하는 유신의 개인 웹사이트입니다." />
+  <style>
+    :root {
+      --bg: #f6f4ef;
+      --surface: #ffffff;
+      --text: #1d1d1f;
+      --muted: #6b6b70;
+      --line: #e3dfd6;
+      --accent: #1f6f5c;
+      --accent-soft: #e2f0ec;
+    }
+    :root[data-theme="dark"] {
+      --bg: #121416;
+      --surface: #1b1e21;
+      --text: #ecebe7;
+      --muted: #9a9ca0;
+      --line: #2b2f33;
+      --accent: #6fd0b5;
+      --accent-soft: #1d3a33;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                   "Malgun Gothic", "Noto Sans KR", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background .25s, color .25s;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+    /* 상단 메뉴 */
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 88%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { font-weight: 800; letter-spacing: -0.02em; }
+    .logo span { color: var(--accent); }
+    .menu { display: flex; gap: 20px; align-items: center; font-size: 0.93rem; }
+    .menu a { color: var(--muted); }
+    .menu a:hover { color: var(--accent); }
+    #themeBtn {
+      border: 1px solid var(--line); background: var(--surface); color: var(--text);
+      border-radius: 999px; width: 36px; height: 36px; cursor: pointer; font-size: 1rem;
+    }
+
+    /* 첫 화면 */
+    .hero { padding: 96px 0 72px; }
+    .hello { color: var(--accent); font-weight: 700; font-size: 0.95rem; margin-bottom: 14px; }
+    h1 { font-size: clamp(2.2rem, 7vw, 3.6rem); line-height: 1.2; letter-spacing: -0.03em; }
+    h1 em { font-style: normal; color: var(--accent); }
+    .hero p { margin-top: 20px; color: var(--muted); max-width: 34em; font-size: 1.05rem; }
+    .btns { margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      padding: 11px 22px; border-radius: 999px; font-weight: 600; font-size: 0.95rem;
+      border: 1px solid var(--accent); transition: transform .15s;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn.fill { background: var(--accent); color: var(--bg); }
+    .btn.line { color: var(--accent); }
+
+    /* 공통 섹션 */
+    section { padding: 56px 0; border-top: 1px solid var(--line); }
+    h2 { font-size: 1.5rem; letter-spacing: -0.02em; margin-bottom: 24px; }
+    h2 small { display: block; font-size: 0.8rem; color: var(--accent); font-weight: 700; letter-spacing: 0.08em; margin-bottom: 4px; }
+
+    .about p + p { margin-top: 12px; }
+    .about p { color: var(--muted); }
+    .about strong { color: var(--text); }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+    .tag {
+      background: var(--accent-soft); color: var(--accent);
+      padding: 6px 14px; border-radius: 999px; font-size: 0.9rem; font-weight: 600;
+    }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+      padding: 22px; display: block; transition: transform .15s, border-color .15s;
+    }
+    .card:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .card h3 { font-size: 1.05rem; margin-bottom: 6px; }
+    .card p { color: var(--muted); font-size: 0.92rem; }
+    .card .lang { margin-top: 14px; font-size: 0.8rem; color: var(--accent); font-weight: 700; }
+
+    .contact p { color: var(--muted); margin-bottom: 18px; }
+
+    footer { padding: 32px 0 48px; color: var(--muted); font-size: 0.85rem; text-align: center; border-top: 1px solid var(--line); }
+
+    @media (max-width: 560px) {
+      .menu a { display: none; }
+      .hero { padding: 64px 0 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="wrap">
+      <a href="#" class="logo">yusin<span>.</span>dev</a>
+      <div class="menu">
+        <a href="#about">소개</a>
+        <a href="#skills">공부</a>
+        <a href="#contact">연락</a>
+        <button id="themeBtn" aria-label="다크 모드 전환">🌙</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <!-- ① 첫 화면: 이름과 한 줄 소개를 원하는 대로 바꾸세요 -->
+    <div class="hero">
+      <div class="hello">안녕하세요 👋</div>
+      <h1>컴퓨터인공지능학부에서 공부하는<br /><em>유신</em>입니다.</h1>
+      <p>배운 것을 직접 만들어 보면서 익히는 것을 좋아합니다. 이 페이지는 GitHub Pages로 배포한 저의 첫 웹사이트입니다.</p>
+      <div class="btns">
+        <a class="btn fill" href="#about">소개 보기</a>
+        <a class="btn line" href="https://github.com/yusinbin" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+
+    <!-- ② 자기소개 -->
+    <section id="about" class="about">
+      <h2><small>ABOUT</small>소개</h2>
+      <p>저는 <strong>컴퓨터인공지능학부에 재학중인 대학생</strong>입니다. 자료구조, 네트워크, 모바일 프로그래밍 같은 과목을 들으며 기초를 쌓고 있습니다.</p>
+      <p>저번 학기엔 <strong>Kotlin으로 안드로이드 앱</strong>도 만들어 봤습니다. 요즘은 Git과 GitHub로 협업하는 방법을 익히고 있습니다.</p>
+    </section>
+
+    <!-- ③ 공부하는 것: 태그를 추가/삭제하세요 -->
+    <section id="skills">
+      <h2><small>STUDY</small>공부하고 있는 것</h2>
+      <div class="tags">
+        <span class="tag">Kotlin</span>
+        <span class="tag">Android</span>
+        <span class="tag">자료구조</span>
+        <span class="tag">이산수학</span>
+        <span class="tag">컴퓨터 네트워크</span>
+        <span class="tag">통계</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Git / GitHub</span>
+        <span class="tag">HTML / CSS</span>
+      </div>
+    </section>
+
+    <!-- ④ 연락처: 이메일 주소를 본인 것으로 바꾸세요 -->
+    <section id="contact" class="contact">
+      <h2><small>CONTACT</small>연락</h2>
+      <p>궁금한 점이 있거나 같이 공부하고 싶다면 편하게 연락 주세요.</p>
+      <div class="btns">
+        <a class="btn fill" href="mailto:your-email@example.com">이메일 보내기</a>
+        <a class="btn line" href="https://github.com/yusinbin" target="_blank" rel="noopener">github.com/yusinbin</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © <span id="year"></span> 유신 · GitHub Pages로 배포
+  </footer>
+
+  <script>
+    // 연도 자동 표시
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // 다크 모드 전환 (선택한 값은 브라우저에 기억)
+    const root = document.documentElement;
+    const btn = document.getElementById("themeBtn");
+    function setTheme(t) {
+      root.setAttribute("data-theme", t);
+      btn.textContent = t === "dark" ? "☀️" : "🌙";
+    }
+    let saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (e) {}
+    setTheme(saved || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
+    btn.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      setTheme(next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+  </script>
+</body>
+</html>
